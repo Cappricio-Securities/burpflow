@@ -4,7 +4,7 @@ BurpFlow is a lightweight Node.js CLI tool that routes HTTP requests through a B
 
 <div align="center">
 
-![Logo](http://cappriciosec.com/admin_university/university_automation/images/img_69b8fb0ccafe10.71559296.gif)
+![Logo](https://cappriciosec.com/admin_university/university_automation/images/img_69b932115fd5a4.46720450.png)
 
 [![npm version](https://img.shields.io/npm/v/burpflow?style=for-the-badge\&color=00ff41)](https://www.npmjs.com/package/burpflow)
 [![MIT License](https://img.shields.io/badge/License-MIT-00ff41?style=for-the-badge)](https://choosealicense.com/licenses/mit/)
