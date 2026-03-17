@@ -1,19 +1,19 @@
 {
   "name": "burpflow",
-  "version": "0.0.2",
-  "description": "BurpFlow is a powerful tool for bug bounty hunters and penetration testers to load recon data into burp suite.",
+  "version": "1.0.0",
+  "description": "BurpFlow is a powerful Burp Suite automation tool and a must-have for bug bounty hunters and penetration testers, enabling fast recon-to-testing workflows, proxy-based URL loading, and efficient web application security testing.",
   "homepage": "https://github.com/Cappricio-Securities/burpflow",
-  "main": "index.js",
+  "main": "burpflow.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Cappricio-Securities/burpflow.git"
   },
   "scripts": {
-    "start": "node ."
+    "start": "node burpflow.js"
   },
   "bin": {
-    "burpflow": "./index.js",
-    "BurpFlow": "./index.js"
+    "burpflow": "./burpflow.js",
+    "BurpFlow": "./burpflow.js"
   },
   "readme": "README.md",
   "author": {
@@ -22,27 +22,50 @@
     "url": "https://karthithehacker.com"
   },
   "keywords": [
-    "proxy",
-    "burpflow",
-    "burpsuite",
-    "burp suite extension",
-    "recon",
-    "automation",
-    "websecurity",
-    "bugbounty",
-    "infosec",
-    "cybersecurity",
-    "ethicalhacking",
-    "burpsuiteextension",
-    "karthithehacker"
-  ],
+  "proxy",
+  "burpflow",
+  "burpsuite",
+  "burp suite",
+  "burp proxy",
+  "burp automation",
+  "burp suite tool",
+  "burp suite extension",
+  "burp suite integration",
+  "bug bounty tool",
+  "bug bounty automation",
+  "top bug bounty tools",
+  "best bug bounty tools",
+  "web penetration testing",
+  "pentesting tools",
+  "recon",
+  "recon automation",
+  "url automation",
+  "security testing tool",
+  "web security",
+  "websecurity",
+  "cybersecurity",
+  "cybersecurity tools",
+  "infosec",
+  "ethical hacking",
+  "ethical hacking tools",
+  "ethicalhacking",
+  "bugbounty",
+  "vulnerability testing",
+  "karthithehacker",
+  "cappricio securities",
+  "cappriciosec university",
+  "cappriciosecuniversity",
+  "cappriciosecurities"
+],
+
   "files": [
-    "index.js",
-    "utils"
+    "burpflow.js",
+    "includes"
   ],
   "license": "ISC",
   "dependencies": {
     "axios": "^1.3.5",
+    "chalk": "^4.1.2",
     "events": "^3.3.0",
     "line-reader": "^0.4.0",
     "request": "^2.88.2",

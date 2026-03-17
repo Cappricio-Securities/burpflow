@@ -1,111 +1,207 @@
+# BurpFlow
 
-![Logo](https://github.com/karthi-the-hacker/burpflow/raw/main/images/logo.gif)
+BurpFlow is a lightweight Node.js CLI tool that routes HTTP requests through a Burp Suite proxy, enabling security testers to quickly load and analyze reconnaissance URLs inside Burp.
 
+<div align="center">
 
-## Badges
+![Logo](http://cappriciosec.com/admin_university/university_automation/images/img_69b8fb0ccafe10.71559296.gif)
 
+[![npm version](https://img.shields.io/npm/v/burpflow?style=for-the-badge\&color=00ff41)](https://www.npmjs.com/package/burpflow)
+[![MIT License](https://img.shields.io/badge/License-MIT-00ff41?style=for-the-badge)](https://choosealicense.com/licenses/mit/)
+[![Node Version](https://img.shields.io/badge/Node.js-v14+-00ff41?style=for-the-badge\&logo=node.js)](https://nodejs.org/)
 
+</div>
 
+<br>
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-[![Follow Twitter](https://img.shields.io/twitter/follow/karthithehacker?style=social)](https://twitter.com/karthithehacker)
+## 🎯 What is BurpFlow?
 
+**BurpFlow** is a fast, efficient, and minimal **recon automation CLI tool** designed for **penetration testers**, **bug bounty hunters**, and **security researchers**.
 
-## License
+It simplifies the process of sending HTTP requests through a Burp proxy, allowing you to:
 
-[MIT](https://choosealicense.com/licenses/mit/)
+* Quickly load large URL lists into Burp Suite
+* Automate repetitive recon workflows
+* Validate URLs and proxy configurations
+* Monitor request results in real time
+* Improve efficiency during manual testing
 
+> ⚠️ **DISCLAIMER**: This tool is strictly for **authorized security testing** and **educational use only**. Unauthorized usage is illegal.
 
-## Installation
+## 📌 Features
 
-Install burpflow with npm
-
-```bash
-  npm install burpflow -g
-```
-
-## Configuration
-
-configure burpflow with Burp Suite
-
-```http
-  Add new http proxy to Host : 127.0.0.1 Port : 7777
-```
-
-
-## Usage
-
-Example for single url
-
-```bash
-  burpflow -u http://example.com 
-```
-
-## Usage
-
-Example for list of urls
-
-```bash
-  burpflow -l urls.txt
-```
+* 🌐 **Proxy-Based Requests** – Send traffic through Burp or any HTTP proxy
+* 📂 **Bulk URL Support** – Process single URLs or large URL lists
+* ⚡ **Concurrent Execution** – Adjustable worker threads for faster scanning
+* ⏱️ **Timeout Control** – Prevent long or hanging requests
+* 🧹 **Smart Parsing** – Ignores comments and empty lines in input files
+* 🎨 **Colorized Output** – Clean success and error logs in terminal
+* 🔍 **Input Validation** – Ensures valid proxy and URL formats
 
 
-## Screenshots
+## ⚠️ Requirements
 
-![App Screenshot](https://github.com/karthi-the-hacker/burpflow/raw/main/images/screenshot.jpg)
+* Node.js (v14 or higher recommended)
+* npm
+* Burp Suite (or any HTTP proxy)
 
+## ⚡ Installation
 
-
-## Help menu
-
-#### Get all items
+### Install globally
 
 ```bash
-👋 Hey karthithehacker 
-
- .-----------------------------.           
- |  Tool   : BurpFlow 🎯       |           
- |  Author : @karthithehacker🎖️|           
- |   No place for 127.0.0.1    |           
- '-----------------------------'           
-                 ^      (\_/)    
-                 '----- (O.o)    
-                        (> <)    
-
-    BurpFlow  v0.0.1 
-    BurpFlow is a powerful tool for bug bounty hunters and penetration testers to load recon data into burp suite.
-
-
-    $ burpflow [option]
-
-    Usage: burpflow [options]
-
-
+npm install -g burpflow
 ```
 
-| Argument | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `-h` | `--help` | Show help |
-| `-V` | `--version` | Show version number  |
-| `-u` | `--url` | url to load into burp suite |
-| `-l` | `--list` | file containing list of url |
+### Run locally
+
+```bash
+git clone https://github.com/Cappricio-Securities/burpflow.git
+npm install
+node burpflow.js -h
+```
+
+## ⚙️ Configuration
+
+1. Start Burp Suite
+2. Enable proxy listener (default: `127.0.0.1:8080`)
+3. Use the same proxy in BurpFlow
+
+
+## 🚀 CLI Usage
+
+### Show help
+
+```bash
+burpflow -h
+```
+
+
+### 🌐 Single URL
+
+```bash
+burpflow -p 127.0.0.1:8080 -u https://example.com
+```
 
 
 
-## 🔗 Links
-[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://karthithehacker.com/)
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/karthikeyan--v/)
-[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/karthithehacker)
+### 📂 URL List
+
+Create a file (`urls.txt`):
+
+```
+https://example.com
+https://github.com
+```
+
+Run:
+
+```bash
+burpflow -p 127.0.0.1:8080 -l urls.txt
+```
+
+### ⚡ With Concurrency & Timeout
+
+```bash
+burpflow -p 127.0.0.1:8080 -l urls.txt -c 8 -t 12000
+```
 
 
 
-## Author
+## 📊 Options
 
-- [@karthithehacker](https://github.com/karthi-the-hacker/)
+| Flag                | Description                                     |
+| ------------------- | ----------------------------------------------- |
+| `-p, --proxy`       | Proxy address (required), e.g. `127.0.0.1:8080` |
+| `-u, --url`         | Single URL                                      |
+| `-l, --list`        | File containing URLs                            |
+| `-c, --concurrency` | Parallel requests (default: 5)                  |
+| `-t, --timeout`     | Timeout in ms (default: 10000)                  |
+| `-h, --help`        | Show help                                       |
 
 
 
-## Feedback
+## 🖥️ Example Output
 
-If you have any feedback, please reach out to us at contact@karthithehacker.com
+```bash
+██████╗ ██╗   ██╗██████╗ ██████╗ ███████╗██╗      ██████╗ ██╗    ██╗
+██╔══██╗██║   ██║██╔══██╗██╔══██╗██╔════╝██║     ██╔═══██╗██║    ██║
+██████╔╝██║   ██║██████╔╝██████╔╝█████╗  ██║     ██║   ██║██║ █╗ ██║
+██╔══██╗██║   ██║██╔══██╗██╔═══╝ ██╔══╝  ██║     ██║   ██║██║███╗██║
+██████╔╝╚██████╔╝██║  ██║██║     ██║     ███████╗╚██████╔╝╚███╔███╔╝
+╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝     ╚══════╝ ╚═════╝  ╚══╝╚══╝
+                                Developed by Team : Cappriciosec.com
+
+
+🚀 BurpFlow - Recon to Burp Automation Tool
+
+
+Started
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ proxy  :  192.168.0.103:8080      ┃
+┃ Concurrency: 5 | 10000ms          ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+[✔] Loaded: https://www.example.com [status 200]
+[✔] Loaded: https://www.stage.electronics.example.com [status 200]
+[✔] Loaded: http://www.sprt8.example.co.jp [status 403]
+
+BurpFlow complete. Check Burp Suite proxy history.
+```
+
+
+
+## 📂 Project Structure
+
+```
+burpflow/
+├── burpflow.js
+├── includes/
+│   ├── help.js
+│   ├── utils.js
+│   ├── filereader.js
+│   ├── validate.js
+│   ├── runner.js
+├── README.md
+└── package.json
+```
+
+---
+
+## 🛠️ Troubleshooting
+
+* `ECONNREFUSED` → Proxy not running or wrong port
+* `Invalid URL` → Must start with `http://` or `https://`
+* Missing input → Provide `-u` or `-l`
+
+
+
+## 🎯 Use Cases
+
+* Bug bounty recon workflows
+* Feeding URLs into Burp Proxy history
+* Endpoint validation at scale
+* Faster manual security testing
+
+
+
+## 📬 Feedback
+
+📧 [contact@karthithehacker.com](mailto:contact@karthithehacker.com)
+
+
+
+## 📜 License
+
+MIT License
+
+
+
+## 👨‍💻 Author
+
+**KarthiTheHacker**
+
+* 🌐 [https://karthithehacker.com](https://karthithehacker.com)
+* 🐙 [https://github.com/karthi-the-hacker](https://github.com/karthi-the-hacker)
+
+
 
